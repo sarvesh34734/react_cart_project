@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-class CartItem extends React.Component{
+const CartItem = (props) => {
     
     // increaseQuantity = () => {
     //     // console.log('this',this.props);
@@ -22,13 +22,13 @@ class CartItem extends React.Component{
     //         })
     //     }
     // }
-    render(){
-        const {price,title,qty} = this.props.product;
+    
+        const {price,title,qty} = props.product;
         // console.log("this.props",this.props);
         return(
             <div className="cart-item">
                 <div className="left-block">
-                    <img style={styles.image}/>
+                    <img src={props.product.img} style={styles.image}/>
                 </div>
                 <div className="right-block">
                     <div style={{fontSize:25,fontWeight:'bolder'}}>{title}</div>
@@ -40,26 +40,26 @@ class CartItem extends React.Component{
                             alt="increase"
                             className="action-icons" 
                             src="https://image.flaticon.com/icons/svg/864/864378.svg" 
-                            onClick={()=>this.props.onIncreaseQuantity(this.props.product)}
+                            onClick={()=>props.onIncreaseQuantity(props.product)}
                         />
                         <img 
                             alt="decrease" 
                             className="action-icons" 
                             src="https://image.flaticon.com/icons/svg/864/864373.svg" 
-                            onClick={()=>{this.props.onDecreaseQuantity(this.props.product)}}
+                            onClick={()=>{props.onDecreaseQuantity(props.product)}}
                         />
                         <img 
                             alt="delete" 
                             className="action-icons" 
                             src="https://image.flaticon.com/icons/svg/3209/3209887.svg" 
-                            onClick = {()=>{this.props.onHandleDelete(this.props.product.id)}}
+                            onClick = {()=>{props.onHandleDelete(props.product.id)}}
                         />
                     </div>
                 </div>
             </div>
         );
     }
-}
+
 
 // styling image
 const styles = {
